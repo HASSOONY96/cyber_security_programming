@@ -1,0 +1,34 @@
+import random
+import os
+
+name = ["Ali", "Mustafa", ]
+year = ["1990"]
+football = ["Messi"]
+car = ["Nissan"]
+cat = ["Siri"]
+son = ["Ahmed"]
+
+symbols = ["", "@", "#", "_", ".", "!", "$"]
+
+data = name + year + football + car + cat + son
+
+passwords = set()
+
+while len(passwords) < 100000:
+    part1 = random.choice(data)
+    part2 = random.choice(data)
+    number = str(random.randint(10, 9999))   # رقم عشوائي
+    symbol = random.choice(symbols)
+
+    password = part1 + part2 + number + symbol
+    passwords.add(password)
+
+# سطح المكتب
+desktop = os.path.join(os.path.expanduser("~"), "Desktop")
+file_path = os.path.join(desktop, "passwords.txt")
+
+with open(file_path, "w") as file:
+    for password in passwords:
+        file.write(password + "\n")
+
+print("تم انشاء متطلباتك سيد")
